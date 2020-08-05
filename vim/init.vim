@@ -68,127 +68,190 @@ syntax on
 " 1}}} "
 
 " Keybinds {{{1 "
+
+" Quick insert mode escape
 inoremap jj <Esc>
+
+" Full page scrolling
 noremap J <C-d>
 noremap K <C-u>
-noremap Q :q!<CR>
 
+" Easy quit
+noremap Q :q!<CR>
+" Turn off search mode highlighting
 noremap H :noh<CR>
 
+
+" Start tabular
 noremap <Space><Tab> :Tabular /
-noremap <Space>ve :e! ~/.config/nvim/init.vim<CR>
-noremap <Space>vr :so %<CR>
 
+
+" Edit a file
 noremap <Space>fe :e!<Space>
+" Save the file
 noremap <Space>fs :w!<CR>
-noremap <Space>fc :c!<CR>
-
+" Edit this config file
+noremap <Space>ve :e! ~/.config/nvim/init.vim<CR>
+" Create a new tab
 noremap <Space>tt :tabnew<CR>
+" Go to next tab
 noremap <Space>tn :tabnext<CR>
+" Go to previous tab
 noremap <Space>tp :tabprevious<CR>
+" Close a tab
 noremap <Space>tc :tabclose<CR>
 
+
+" Open Tagbar
 noremap <Space>tb :Tagbar<CR>
+" Open NERDTree
 noremap <Space>nt :NERDTreeToggle<CR>
 
+
+" Run current file as python script
 noremap <Space>pr :!python3<Space><C-r>%<CR>
 
+" Open vim help (type help query)
 noremap <Space>h :help<Space>
+" Begin substitution
 noremap <Space>s :s/
 
+" Quickly exit terminal
 tnoremap <Esc> <C-\><C-n>
 " 1}}} "
 
 " Plugins {{{1 "
+
 " start plugins
 call plug#begin()
+
+" Massive syntax highlighting pack
 Plug 'sheerun/vim-polyglot'
+" File browser
 Plug 'scrooloose/nerdtree'
+" More input buffers
 Plug 'shougo/unite.vim'
+" HTML5 stuff
 Plug 'othree/html5.vim'
+" Git-like file history
 Plug 'mbbill/undotree'
-Plug 'osyo-manga/vim-over'
+" Peek registers during paste or macro execution
 Plug 'junegunn/vim-peekaboo'
+" Apply syntax highlighting only to the code thats currently being edited
 Plug 'junegunn/limelight.vim'
+" Emoji support for vim
 Plug 'junegunn/vim-emoji'
-Plug 'liuchengxu/vim-which-key'
+" Quick UI for vim
 Plug 'skywind3000/vim-quickui'
+" Adds cool icons to NERDTree - Requires a Nerd Font, see below
 Plug 'ryanoasis/vim-devicons'
-" Plug 'davidhalter/jedi-vim'
+" An amazing snippet engine
 Plug 'SirVer/ultisnips'
+" Library of snippets to use with UltiSnips
 Plug 'honza/vim-snippets'
+" A cool statusbar
 Plug 'vim-airline/vim-airline'
+" Themes for vim-airline
 Plug 'vim-airline/vim-airline-themes'
+" Ability to edit with multiple cursors
 Plug 'terryma/vim-multiple-cursors'
+" My favorite color scheme
 Plug 'joshdick/onedark.vim'
+" Features for programming in C/C++
 Plug 'vim-scripts/c.vim'
+" Fuzzy finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Integration for tldr shell command (TLDR for man pages)
 Plug 'wlemuel/vim-tldr'
+" Display indent lines
 Plug 'yggdroot/indentline'
+" Features for editing CSV files
 Plug 'chrisbra/csv.vim'
+" Buffer finder
 Plug 'kien/ctrlp.vim'
+" Coloring for parenthesees and braces
 Plug 'luochen1990/rainbow'
+" Git integration
 Plug 'tpope/vim-fugitive'
+" Speedy HTML editing
 Plug 'mattn/emmet-vim'
+" Rust and Cargo integration
 Plug 'rust-lang/rust.vim'
+" Shows uncommitted changes
 Plug 'airblade/vim-gitgutter'
-" Plug 'itchyny/lightline.vim'
+" Automatically adds closing pairs
 Plug 'jiangmiao/auto-pairs'
+" Javascript completer
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install'  }
+" Adjusts editor settings to match .editorconfig file
 Plug 'editorconfig/editorconfig-vim'
+" Asynchronous Lint Engine
 Plug 'w0rp/ale'
+" Syntax checking
 Plug 'scrooloose/syntastic'
+" Extra functions for vim
 Plug 'xolox/vim-misc'
+" Sensible dotfile settings
 Plug 'tpope/vim-sensible'
+" Improved markdown editing
 Plug 'plasticboy/vim-markdown'
+" Easy whitespace formatting 
 Plug 'godlygeek/tabular'
+" Comment and uncomment code
 Plug 'tpope/vim-commentary'
+" Add, change, or delete surrounding pairs
 Plug 'tpope/vim-surround'
-Plug 'kien/ctrlp.vim'
+" Easily jump around files
 Plug 'easymotion/vim-easymotion'
-Plug 'sillybun/vim-repl'
-Plug 'sheerun/vim-polyglot'
+" Commander of Completion - Best completion plugin
 Plug 'neoclide/coc.nvim'
+" Menu that shows variables, functions, and classes in current file
 Plug 'majutsushi/tagbar'
-" 1}}} "
+
+" NERD FONT INFO:
+" --------------------------------------------------
+" Nerd Fonts add cool icons into your font by replacing unused Unicode
+" characters.  Fonts can be directly downloaded from their Github page.
+"
+" To insert a symbol, find the hex code from the website and do
+" <C-v>u followed by the four digit hex code while in insert mode in vim.
+"
+" 爵 https://www.nerdfonts.com/ 
+"   https://github.com/ryanoasis/nerd-fonts
+" Current font: Fira Code Retina Complete Nerd Font
+" --------------------------------------------------
+
+" Unneeded in neovim
+" Plug 'osyo-manga/vim-over'
+
+"" 1}}} "
 
 " Plugin config {{{1 "
+
+" Enable tern completer for javascript
 autocmd FileType javascript setlocal omnifunc=tern#Complete
 
+" UltiSnips configuration
+"
+" Snippets must be triggered with <C-j>
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical""
 
+" Enable Nerd Fonts in airline
 let g:airline_powerline_fonts = 1
 
+" Finish plugin loading
 call plug#end()
 so %
 PlugInstall
 
+" Set color scheme to One Dark
 colo onedark
 
+" Configure rainbow
 let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
 let g:rainbow_active=1
-" 1}}} "
-
-" Startup stuff {{{1 "
-
-" nnoremap i :call DoStartup()<CR>
-" fun! DoStartup()
-"     quit
-"     NERDTreeToggle
-"     Tagbar
-"     exe "normal! \<C-w>l"
-"     65sp
-"     exe "normal! \<C-w>j"
-"     term
-"     exe "normal! \<C-w>k"
-"     nunmap i
-" endf
-
-" 1}}} "
-
-" Python stuff {{{1 "
 
 " 1}}} "
