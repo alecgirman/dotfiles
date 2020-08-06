@@ -4,11 +4,13 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US
 
 # oh my zsh setup
-plugins=(git)
+# 爵 https://ohmyz.sh
+#   https://github.com/ohmyzsh/ohmyzsh
+plugins=(git colored-man-pages)
 source $ZSH/oh-my-zsh.sh
 
 # setup pure prompt (my favorite zsh prompt)
-# https://github.com/sindresorhus/pure
+#   https://github.com/sindresorhus/pure
 fpath+=$HOME/.zsh/pure
 autoload -U colors;
 autoload -U promptinit;
