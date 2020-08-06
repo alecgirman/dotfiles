@@ -15,10 +15,9 @@ set nowrap			" Disable text wrapping, even when it heavily limits your view.  I 
 " set wildmode=list:longest
 set wildmode=full	" Neovim default, shows beautiful popup (when its not that ugly magenta one)
 set modeline 		" Evaluate modelines, allowing you to set per-file vim options from within the file itself.
-set swapfile		" Forces files to exist only in memory and not to be cached to disk.  For me, when set to 'swapfile', trying to openA
+set swapfile		" Disable swap files
 set dir=~/tmp       " Sets the directory for the swap files.
 set cursorline
-" any file results in it warning me about an existing swap file which is annoying as shit.
 
 " search settings
 set ignorecase      " Ignore case in search and seek commands
@@ -241,6 +240,13 @@ let g:UltiSnipsEditSplit="vertical""
 
 " Enable Nerd Fonts in airline
 let g:airline_powerline_fonts = 1
+
+" indentline overrides conceallevel and concealcursor settings so this must be set here
+
+" Disable concealed text while in insert mode - useful for markdown
+let g:indentLine_concealcursor = 'nc'
+" Makes concealed text not block cursor movement
+let g:indentLine_conceallevel = 1
 
 " Finish plugin loading
 call plug#end()
