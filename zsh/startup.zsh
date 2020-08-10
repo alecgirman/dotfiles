@@ -8,4 +8,18 @@ function wifi-connect() {
 
     # 2. Obtain IP address information from network
     dhcpcd
+
+    sleep 2
+
+    # conduct ping tset to check for successful connection
+    echo "Conducting ping test..."
+    ping www.google.com &> /dev/null
+
+    if [[ $? -eq 2 ]]
+    then
+        echo "Failed to connect"
+    elif [[ $? -eq 0 ]]
+    then
+        echo "Connection successful!"
+    fi
 }
