@@ -30,12 +30,17 @@ alias ls='ls --color'
 alias chx='chmod +x'
 alias snow='shutdown now'
 
+# cargo
+alias ccb='cargo clean; cargo build'
+alias ccbr='cargo clean; cargo build; cargo run'
+
 # spelling error aliases
 alias :q='exit'
 alias sl='echo "You spelled ls wrong"; ls'
 
 # desktop env
 alias kde='xinit /usr/bin/startplasma-x11'
+alias bspwm='xinit /usr/local/bin/bspwm'
 
 # source other files
 source ~/dotfiles/zsh/startup.zsh
