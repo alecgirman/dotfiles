@@ -1,29 +1,27 @@
 " Quick settings {{{1 "
-set showmode		" Display the mode in the statusbar.  I don't know why you'd have this off.
-set showcmd			" Has nothing to do with showing the comand, but shows the visual selection dimensions.
+set showmode		" Display the mode in the statusbar.
+set showcmd			" Show visual selection dimensions
 set showmatch		" Show matching pairs when your cursor is on one.
 set hidden			" Allows modified buffers to be closed without losing their content.  Will prompt to save on exit.
 set autowrite		" Automatically save ONLY when executing commands that involve processing that file (like :make)
-set autoread		" Supposed to update the file when changed elsewhere but that doesnt seem to work.
-set number			" When this comes before relativenumber, all line numbers are relative excxept the current line.
-set relativenumber	" lines are numbered based on their distance from the cursor.
+set autoread		" Supposed to update the file when changed elsewhere but that doesn't seem to work.
+set number			" Show line numbers
+set relativenumber	" Line numbers are relative, except the current line (if number is set)
 set laststatus=2	" Always show a status bar on each window.
 set showtabline=2	" Always show the tab bar.  Alternatively, it can be set to 1 to only show when theres more than one tab.
 set scrolloff=10	" A 'scroll padding', makes scrolling in vim feel a little more like other text edfitors and more natural.
-set nowrap			" Disable text wrapping, even when it heavily limits your view.  I just hate line wrapping anywhere
-" set completeopt=longest,menuone,preview
-" set wildmode=list:longest
+set nowrap			" Disable text wrapping
 set wildmode=full	" Neovim default, shows beautiful popup (when its not that ugly magenta one)
 set modeline 		" Evaluate modelines, allowing you to set per-file vim options from within the file itself.
-set swapfile		" Disable swap files
-set dir=~/tmp       " Sets the directory for the swap files.
-set cursorline
+set swapfile		" Enable swap files
+set dir=~/tmp       " ...but keep them in /tmp
+set cursorline      " Change the background style of the current line
 
 " search settings
 set ignorecase      " Ignore case in search and seek commands
-set smartcase       " ...but only in search commands
-set incsearch       " Perform searches and highlight matches as you're typing your search
+set smartcase       " ...but not in motions or other commands (:g, :v, :s, etc)
 set hlsearch        " Highlight search matches
+set incsearch       " Highlight and move to search results as you're typing
 
 set mouse=a             " Enable full mouse support
 set mousemodel=popup  " Define the mouse model
@@ -32,7 +30,6 @@ if has ('nvim')		" only works in vim
 	set icm=nosplit     " Perform searches and highlight substitutions as you're typing substitution commands 
 else
     set ttymouse=sgr      " Set terminal mouse input mode
-    " call setenv('VIMRUNTIME', '/usr/share/vim/vim82')
     syntax on
 endif
 
@@ -60,7 +57,7 @@ set timeoutlen=300              " shorten the key timeout from the default of 50
 
 " set diffopt=                    " clear diff settings
 set diffopt+=iwhite,iblank      " ignore whitespace and blank lines when evaluating diff
-set foldmethod=marker
+set foldmethod=marker           " Use markers for better folds - can be added with fold and foldc snippet
 
 filetype plugin indent on
 syntax on
