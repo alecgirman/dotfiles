@@ -203,6 +203,12 @@ Plug 'easymotion/vim-easymotion'
 Plug 'neoclide/coc.nvim'
 " Menu that shows variables, functions, and classes in current file
 Plug 'majutsushi/tagbar'
+" Underlines the word under the cursor
+Plug 'itchyny/vim-cursorword'
+" Improved JS support
+Plug 'pangloss/vim-javascript'
+" Text exchange operator
+Plug 'tommcdo/vim-exchange'
 
 " NERD FONT INFO:
 " --------------------------------------------------
