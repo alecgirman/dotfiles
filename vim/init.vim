@@ -66,7 +66,7 @@ syntax on
 " Keybinds {{{1 "
 
 " Quick insert mode escape
-inoremap jj <Esc>
+inoremap jj <Esc>l
 
 " Full page scrolling
 noremap J <C-d>
@@ -76,7 +76,6 @@ noremap K <C-u>
 noremap Q :q!<CR>
 " Turn off search mode highlighting
 noremap H :noh<CR>
-
 
 " Start tabular
 noremap <Space><Tab> :Tabular /
@@ -102,7 +101,8 @@ noremap <Space>tc :tabclose<CR>
 noremap <Space>tb :Tagbar<CR>
 " Open NERDTree
 noremap <Space>nt :NERDTreeToggle<CR>
-
+" Open Undo tree
+noremap <Space>ut :UndotreeToggle<CR>
 
 " Run current file as python script
 noremap <Space>pr :!python3<Space><C-r>%<CR>
@@ -236,10 +236,19 @@ autocmd FileType javascript setlocal omnifunc=tern#Complete
 " UltiSnips configuration
 "
 " Snippets must be triggered with <C-j>
-let g:UltiSnipsExpandTrigger="<c-j>"
+" let g:UltiSnipsExpandTrigger="tab"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical""
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 " Enable Nerd Fonts in airline
 let g:airline_powerline_fonts = 1

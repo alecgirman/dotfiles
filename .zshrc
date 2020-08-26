@@ -3,6 +3,10 @@ export ZSH="/root/.oh-my-zsh"
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US
 
+# XDG directories
+export XDG_DATA_DIRS="/usr/local/share:/usr/share"
+export XDG_CONFIG_DIRS="/etc/xdg"
+
 # oh my zsh setup
 # 爵 https://ohmyz.sh
 #   https://github.com/ohmyzsh/ohmyzsh

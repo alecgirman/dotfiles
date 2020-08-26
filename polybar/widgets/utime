@@ -1,0 +1,3 @@
+unixtime=$(date +%s)
+realtime=$(date +%T)
+echo "%{F#61afef}$realtime%{F-}"

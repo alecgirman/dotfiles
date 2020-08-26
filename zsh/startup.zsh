@@ -23,3 +23,8 @@ function wifi-connect() {
         echo "Connection successful!"
     fi
 }
+
+function start-kde() {
+    xinit /usr/bin/startplasma-x11 &
+    pulseaudio &
+}
