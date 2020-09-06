@@ -260,6 +260,9 @@ let g:indentLine_concealcursor = 'nc'
 " Makes concealed text not block cursor movement
 let g:indentLine_conceallevel = 1
 
+let g:mkdp_browser = 'firefox'
+let g:mkdp_auto_start = 1
+
 " Finish plugin loading
 call plug#end()
 so %
