@@ -133,8 +133,6 @@ Plug 'othree/html5.vim'
 Plug 'mbbill/undotree'
 " Peek registers during paste or macro execution
 Plug 'junegunn/vim-peekaboo'
-" Apply syntax highlighting only to the code thats currently being edited
-Plug 'junegunn/limelight.vim'
 " Emoji support for vim
 Plug 'junegunn/vim-emoji'
 " Quick UI for vim
@@ -203,8 +201,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'neoclide/coc.nvim'
 " Menu that shows variables, functions, and classes in current file
 Plug 'majutsushi/tagbar'
-" Underlines the word under the cursor
-Plug 'itchyny/vim-cursorword'
+" Highlights the word under the cursor
+Plug 'RRethy/vim-illuminate'
 " Improved JS support
 Plug 'pangloss/vim-javascript'
 " Text exchange operator
