@@ -207,6 +207,8 @@ Plug 'RRethy/vim-illuminate'
 Plug 'pangloss/vim-javascript'
 " Text exchange operator
 Plug 'tommcdo/vim-exchange'
+" Vim Markdown preview
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
 " NERD FONT INFO:
 " --------------------------------------------------
