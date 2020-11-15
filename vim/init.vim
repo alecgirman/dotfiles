@@ -209,6 +209,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'tommcdo/vim-exchange'
 " Vim Markdown preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+" Jinja2 syntax highlighting
+Plug 'Glench/Vim-Jinja2-Syntax'
 
 " NERD FONT INFO:
 " --------------------------------------------------
