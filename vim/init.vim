@@ -267,7 +267,7 @@ let g:mkdp_auto_start = 1
 
 " Finish plugin loading
 call plug#end()
-so %
+" so %
 PlugInstall
 
 " Set color scheme to One Dark
