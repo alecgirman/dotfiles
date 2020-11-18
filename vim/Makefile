@@ -31,6 +31,7 @@ snippets:
 # config files in the install directory
 updatelocal:
 	cp -r $(INSTALLDIR)/UltiSnips ./
+	cp -r $(INSTALLDIR)/init.vim ./
 	cp $(COCEXTDIR)/package.json package.json
 
 # install coc extensions with yarn
