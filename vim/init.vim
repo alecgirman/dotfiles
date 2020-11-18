@@ -125,18 +125,10 @@ call plug#begin()
 Plug 'sheerun/vim-polyglot'
 " File browser
 Plug 'scrooloose/nerdtree'
-" More input buffers
-Plug 'shougo/unite.vim'
-" HTML5 stuff
-Plug 'othree/html5.vim'
 " Git-like file history
 Plug 'mbbill/undotree'
-" Peek registers during paste or macro execution
-Plug 'junegunn/vim-peekaboo'
 " Emoji support for vim
 Plug 'junegunn/vim-emoji'
-" Quick UI for vim
-Plug 'skywind3000/vim-quickui'
 " Adds cool icons to NERDTree - Requires a Nerd Font, see below
 Plug 'ryanoasis/vim-devicons'
 " An amazing snippet engine
@@ -151,26 +143,14 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'terryma/vim-multiple-cursors'
 " My favorite color scheme
 Plug 'joshdick/onedark.vim'
-" Features for programming in C/C++
-Plug 'vim-scripts/c.vim'
-" Fuzzy finder
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Integration for tldr shell command (TLDR for man pages)
-Plug 'wlemuel/vim-tldr'
 " Display indent lines
 Plug 'yggdroot/indentline'
-" Features for editing CSV files
-Plug 'chrisbra/csv.vim'
 " Buffer finder
 Plug 'kien/ctrlp.vim'
 " Coloring for parenthesees and braces
 Plug 'luochen1990/rainbow'
 " Git integration
 Plug 'tpope/vim-fugitive'
-" Speedy HTML editing
-Plug 'mattn/emmet-vim'
-" Rust and Cargo integration
-Plug 'rust-lang/rust.vim'
 " Shows uncommitted changes
 Plug 'airblade/vim-gitgutter'
 " Automatically adds closing pairs
@@ -201,16 +181,39 @@ Plug 'easymotion/vim-easymotion'
 Plug 'neoclide/coc.nvim'
 " Menu that shows variables, functions, and classes in current file
 Plug 'majutsushi/tagbar'
-" Highlights the word under the cursor
-Plug 'RRethy/vim-illuminate'
-" Improved JS support
-Plug 'pangloss/vim-javascript'
-" Text exchange operator
-Plug 'tommcdo/vim-exchange'
 " Vim Markdown preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 " Jinja2 syntax highlighting
 Plug 'Glench/Vim-Jinja2-Syntax'
+
+" UNUSED PLUGINS
+
+" Quick UI for vim
+" Plug 'skywind3000/vim-quickui'
+" Text exchange operator - UNUSED
+" Plug 'tommcdo/vim-exchange'
+" Highlights the word under the cursor - UNUSED
+" Plug 'RRethy/vim-illuminate'
+" Peek registers during paste or macro execution - POSSIBLE SLOWDOWN
+" Plug 'junegunn/vim-peekaboo'
+" Improved JS support
+" Plug 'pangloss/vim-javascript'
+" Speedy HTML editing
+" Plug 'mattn/emmet-vim'
+" Features for editing CSV files
+" Plug 'chrisbra/csv.vim'
+" Integration for tldr shell command (TLDR for man pages)
+" Plug 'wlemuel/vim-tldr'
+" More input buffers
+" Plug 'shougo/unite.vim'
+" HTML5 stuff
+" Plug 'othree/html5.vim'
+" Features for programming in C/C++
+" Plug 'vim-scripts/c.vim'
+" Fuzzy finder
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Rust and Cargo integration
+" Plug 'rust-lang/rust.vim'
 
 " NERD FONT INFO:
 " --------------------------------------------------
