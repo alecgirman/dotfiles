@@ -17,6 +17,9 @@ set swapfile		" Enable swap files
 set dir=~/tmp       " ...but keep them in /tmp
 set cursorline      " Change the background style of the current line
 
+" https://www.reddit.com/r/vim/comments/8qk0qy/disable_concealing_for_cursor_line/
+set concealcursor-=n " Disable concealcursor for current line
+
 " search settings
 set ignorecase      " Ignore case in search and seek commands
 set smartcase       " ...but not in motions or other commands (:g, :v, :s, etc)
@@ -114,6 +117,8 @@ noremap <Space>s :s/
 
 " Quickly exit terminal
 tnoremap <Esc> <C-\><C-n>
+
+vmap <Space>f <Plug>(coc-format-selected)
 " 1}}} "
 
 " Plugins {{{1 "
