@@ -134,8 +134,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'mbbill/undotree'
 " Emoji support for vim
 Plug 'junegunn/vim-emoji'
-" Adds cool icons to NERDTree - Requires a Nerd Font, see below
-Plug 'ryanoasis/vim-devicons'
 " An amazing snippet engine
 Plug 'SirVer/ultisnips'
 " Library of snippets to use with UltiSnips
@@ -190,6 +188,10 @@ Plug 'majutsushi/tagbar'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 " Jinja2 syntax highlighting
 Plug 'Glench/Vim-Jinja2-Syntax'
+" Black formatting for Python
+Plug 'psf/black'
+" Adds cool icons to NERDTree - Requires a Nerd Font, see below
+Plug 'ryanoasis/vim-devicons'
 
 " UNUSED PLUGINS
 
@@ -271,7 +273,7 @@ let g:indentLine_concealcursor = 'nc'
 let g:indentLine_conceallevel = 1
 
 let g:mkdp_browser = 'firefox'
-let g:mkdp_auto_start = 1
+let g:mkdp_auto_start = 0
 
 " Finish plugin loading
 call plug#end()
@@ -280,6 +282,9 @@ PlugInstall
 
 " Set color scheme to One Dark
 colo onedark
+
+" Automatically format python files with black on save
+autocmd BufWritePre *.py execute ':Black'
 
 " Configure rainbow
 let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
