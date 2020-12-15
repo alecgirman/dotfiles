@@ -71,6 +71,9 @@ syntax on
 " Quick insert mode escape
 inoremap jj <Esc>l
 
+" trying this one out too, its like 0.01 seconds faster than jj
+inoremap jk <Esc>l
+
 " Full page scrolling
 noremap J <C-d>
 noremap K <C-u>
@@ -114,6 +117,9 @@ noremap <Space>pr :!python3<Space><C-r>%<CR>
 noremap <Space>h :help<Space>
 " Begin substitution
 noremap <Space>s :s/
+
+" Ripgrep
+noremap <Space>r :Rg<Space>''<Left>
 
 " Quickly exit terminal
 tnoremap <Esc> <C-\><C-n>
@@ -190,6 +196,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'Glench/Vim-Jinja2-Syntax'
 " Black formatting for Python
 Plug 'psf/black'
+" Ripgrep for vim
+Plug 'jremmen/vim-ripgrep'
 " Adds cool icons to NERDTree - Requires a Nerd Font, see below
 Plug 'ryanoasis/vim-devicons'
 
@@ -277,8 +285,6 @@ let g:mkdp_auto_start = 0
 
 " Finish plugin loading
 call plug#end()
-" so %
-PlugInstall
 
 " Set color scheme to One Dark
 colo onedark
