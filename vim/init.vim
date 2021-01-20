@@ -125,6 +125,7 @@ noremap <Space>r :Rg<Space>''<Left>
 tnoremap <Esc> <C-\><C-n>
 
 vmap <Space>f <Plug>(coc-format-selected)
+noremap <Tab> za
 " 1}}} "
 
 " Plugins {{{1 "
@@ -282,6 +283,11 @@ let g:indentLine_conceallevel = 1
 
 let g:mkdp_browser = 'firefox'
 let g:mkdp_auto_start = 0
+
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|log\|tmp$',
+  \ 'file': '\.so$\|\.dat$|\.DS_Store$'
+  \ }
 
 " Finish plugin loading
 call plug#end()
