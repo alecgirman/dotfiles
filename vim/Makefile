@@ -7,6 +7,7 @@ COCEXTDIR=~/.config/coc/extensions
 install: vimplug snippets
 	mkdir -p $(INSTALLDIR)
 	cp init.vim $(INSTALLDIR)
+	cp -r ftplugin/ $(INSTALLDIR)
 	# https://github.com/junegunn/vim-plug/issues/225
 	nvim --headless +PlugInstall +q +q
 	make coc-extensions
@@ -15,6 +16,7 @@ install: vimplug snippets
 uninstall:
 	rm -rf $(INSTALLDIR)/init.vim
 	rm -rf $(INSTALLDIR)/UltiSnips
+	rm -rf $(INSTALLDIR)/ftplugin
 	rm -rf $(VIMPLUGDIR)/plug.vim
 	rm -rf $(COCEXTDIR)
 
@@ -33,6 +35,7 @@ updatelocal:
 	cp -r $(INSTALLDIR)/UltiSnips ./
 	cp -r $(INSTALLDIR)/init.vim ./
 	cp $(COCEXTDIR)/package.json package.json
+	cp -r $(INSTALLDIR)/ftplugin ./
 
 # install coc extensions with yarn
 coc-extensions:
