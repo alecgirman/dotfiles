@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # exports
-export ZSH="/root/.oh-my-zsh"
+# export ZSH="/root/.oh-my-zsh"
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US
 
@@ -14,23 +14,15 @@ export LANGUAGE=en_US
 export XDG_DATA_DIRS="/usr/local/share:/usr/share"
 export XDG_CONFIG_DIRS="/etc/xdg"
 
-# oh my zsh setup
-# 爵 https://ohmyz.sh
-#   https://github.com/ohmyzsh/ohmyzsh
-plugins=(git colored-man-pages zsh-autosuggestions zsh-syntax-highlighting)
-source $ZSH/oh-my-zsh.sh
-
-# setup pure prompt (my favorite zsh prompt)
-#   https://github.com/sindresorhus/pure
 autoload -U colors;
 autoload -U promptinit;
 colors && promptinit;
 
-source /root/.oh-my-zsh/custom/plugins/powerlevel10k/powerlevel10k.zsh-theme
+# source powerlevel10k if it exists
+[ -d ~/.zsh ] && source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 
 # Vi mode options
-bindkey -v
-export KEYTIMEOUT=0.3
+# bindkey -v
 
 # init thefuck alias
 eval $(thefuck --alias)
@@ -53,9 +45,15 @@ alias sl='echo "You spelled ls wrong"; ls'
 alias kde='xinit /usr/bin/startplasma-x11'
 alias bspwm='xinit /usr/local/bin/bspwm'
 
-# source other files
-source ~/dotfiles/zsh/startup.zsh
-source ~/dotfiles/zsh/zplugman.zsh
+alias vim='nvim'
+alias v='nvim'
+
+alias gs='git status'
+alias gcm='git commit -m'
+alias gu='git pull'
+alias gp='git push'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+source ~/dotfiles/zsh/startup.zsh
