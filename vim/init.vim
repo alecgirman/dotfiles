@@ -281,9 +281,14 @@ let g:indentLine_concealcursor = 'nc'
 " Makes concealed text not block cursor movement
 let g:indentLine_conceallevel = 1
 
+" disable auto-folding in markdown
+let g:vim_markdown_folding_disabled = 1
+
+" Set default markdown preview browser
 let g:mkdp_browser = 'firefox'
 let g:mkdp_auto_start = 0
 
+" Disable folders in ctrl-p, most notably, node_modules
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.yardoc\|node_modules\|log\|tmp$',
   \ 'file': '\.so$\|\.dat$|\.DS_Store$'
