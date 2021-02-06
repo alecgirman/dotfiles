@@ -300,9 +300,17 @@ call plug#end()
 " Set color scheme to One Dark
 colo onedark
 
-
 " Configure rainbow
 let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
 let g:rainbow_active=1
 
 " 1}}} "
+
+" Functions {{{1 "
+
+func! BlackFormat()
+    silent! execute "!black " . bufname('%')
+    edit!
+endf
+
+" }}} "
