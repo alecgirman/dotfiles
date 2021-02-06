@@ -195,8 +195,6 @@ Plug 'majutsushi/tagbar'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 " Jinja2 syntax highlighting
 Plug 'Glench/Vim-Jinja2-Syntax'
-" Black formatting for Python
-Plug 'psf/black'
 " Ripgrep for vim
 Plug 'jremmen/vim-ripgrep'
 " Adds cool icons to NERDTree - Requires a Nerd Font, see below
@@ -204,6 +202,8 @@ Plug 'ryanoasis/vim-devicons'
 
 " UNUSED PLUGINS
 
+" Black formatting for Python
+" Plug 'psf/black'
 " Quick UI for vim
 " Plug 'skywind3000/vim-quickui'
 " Text exchange operator - UNUSED
@@ -300,8 +300,6 @@ call plug#end()
 " Set color scheme to One Dark
 colo onedark
 
-" Automatically format python files with black on save
-autocmd BufWritePre *.py execute ':Black'
 
 " Configure rainbow
 let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
