@@ -17,6 +17,9 @@ set swapfile		" Enable swap files
 set dir=~/tmp       " ...but keep them in /tmp
 set cursorline      " Change the background style of the current line
 
+set shell=zsh       " Set terminal shell to zsh
+set exrc            " Source local vim files
+
 " https://www.reddit.com/r/vim/comments/8qk0qy/disable_concealing_for_cursor_line/
 set concealcursor-=n " Disable concealcursor for current line
 
@@ -25,6 +28,9 @@ set ignorecase      " Ignore case in search and seek commands
 set smartcase       " ...but not in motions or other commands (:g, :v, :s, etc)
 set hlsearch        " Highlight search matches
 set incsearch       " Highlight and move to search results as you're typing
+
+set splitbelow      " Split windows always go below, unless otherwise specified (:aboveleft split)
+set splitright      " Vertically split windows always go to the right, unless otherwise specified
 
 set mouse=a             " Enable full mouse support
 set mousemodel=popup  " Define the mouse model
@@ -102,6 +108,11 @@ noremap <Space>tp :tabprevious<CR>
 " Close a tab
 noremap <Space>tc :tabclose<CR>
 
+" Switch window controls
+noremap <A-j> <C-w>j
+noremap <A-k> <C-w>k
+noremap <A-h> <C-w>h
+noremap <A-l> <C-w>l
 
 " Open Tagbar
 noremap <Space>tb :Tagbar<CR>
@@ -263,10 +274,9 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical""
 
 " Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<c-j>'
-
+let g:coc_snippet_next = '<TAB>'
 " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<c-k>'
+let g:coc_snippet_prev = '<S-TAB>'
 
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
@@ -309,8 +319,48 @@ let g:rainbow_active=1
 " Functions {{{1 "
 
 func! BlackFormat()
-    silent! execute "!black " . bufname('%')
-    edit!
+  silent! execute "!black " . bufname('%')
+  edit!
 endf
+
+func! EchoError(msg)
+  echohl ErrorMsg
+  echo a:msg
+  echohl None
+endf
+
+func! EchoWarning(msg)
+  echohl WarningMsg
+  echo a:msg
+  echohl None
+endf
+
+func! EchoSuccess(msg)
+  echohl String
+  echo a:msg
+  echohl None
+endf
+
+func! PythonRunTests(...)
+  if exists('g:test_func')
+    if a:0 < 1
+      execute "10split term://" . g:test_func
+    else
+      execute "10split term://" . g:test_func . ' ' . a:1
+    endif
+  else
+    call EchoWarning('g:test_func is not set')
+  endif
+endf
+
+function! PythonGetTestContext()
+  let scriptfile = substitute($MYVIMRC, 'init\.vim', '', 'g') . 'scripts/pytest_context.py'
+  let scriptexec = 'python3 ' .  scriptdir . ' '
+  let path_context = expand('%')
+  let file_context = system(scriptexec . @% . ' ' . line('.'))
+  let path_context = substitute(path_context, '\.py', '', 'g')
+  let path_context = substitute(path_context, '/', '.', 'g')
+  return path_context . file_context
+endfunction
 
 " }}} "

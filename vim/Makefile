@@ -4,7 +4,7 @@ VIMPLUGURL="https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 COCEXTDIR=~/.config/coc/extensions
 
 # full install
-install: vimplug snippets
+install: vimplug snippets python-scripts
 	mkdir -p $(INSTALLDIR)
 	cp init.vim $(INSTALLDIR)
 	cp -r ftplugin/ $(INSTALLDIR)
@@ -28,6 +28,9 @@ vimplug:
 # install custom snippets
 snippets:
 	cp -r UltiSnips $(INSTALLDIR)/
+
+python-scripts:
+	cp -r scripts $(INSTALLDIR)/
 
 # update dotfiles folder after making changes to
 # config files in the install directory
