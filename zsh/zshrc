@@ -52,6 +52,7 @@ alias gs='git status'
 alias gcm='git commit -m'
 alias gu='git pull'
 alias gp='git push'
+alias ga='git add'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
