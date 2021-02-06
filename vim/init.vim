@@ -114,6 +114,16 @@ noremap <A-k> <C-w>k
 noremap <A-h> <C-w>h
 noremap <A-l> <C-w>l
 
+noremap <A-J> 5<C-w>-
+noremap <A-K> 5<C-w>+
+noremap <A-H> 5<C-w>>
+noremap <A-L> 5<C-w><
+
+noremap <C-A-h> :aboveleft vs<CR>
+noremap <C-A-l> :belowright vs<CR>
+noremap <C-A-j> :belowright split<CR>
+noremap <C-A-k> :aboveleft split<CR>
+
 " Open Tagbar
 noremap <Space>tb :Tagbar<CR>
 " Open NERDTree

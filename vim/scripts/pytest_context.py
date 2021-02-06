@@ -4,20 +4,24 @@ import re
 filename = argv[1]
 target = int(argv[2]) - 1
 
+
+class InvalidSpacingException(Exception):
+    pass
+
+
 with open(filename, "r") as file:
     # I would remove empty lines but that would mess up the target line
     lines = file.readlines()
-    # lines = [line for line in file.readlines() if line != "\n"]
 
 
-def identify_spacing():
+def identify_spacewidth():
     for line in lines:
         if line.startswith(" "):
             for c in line:
-                space_counter = 0
+                space_width = 0
                 if c == " ":
-                    space_counter += 1
-                return space_counter
+                    space_width += 1
+                return space_width
         if line.startswith("\t"):
             return 0
 
@@ -29,6 +33,8 @@ def count_spacing(line, space_width):
         num_tabs = (len(line) - len(line.lstrip())) / space_width
         if num_tabs.is_integer():
             return num_tabs
+        else:
+            raise InvalidSpacingException()
     elif line.startswith("\n"):
         # hacky way to make it ignore blank lines
         return 9999
@@ -36,7 +42,7 @@ def count_spacing(line, space_width):
         return 0
 
 
-space_width = identify_spacing()
+space_width = identify_spacewidth()
 current_indent = count_spacing(lines[target], space_width)
 parent_lines = []
 
