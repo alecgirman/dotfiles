@@ -355,10 +355,10 @@ endf
 
 function! PythonGetTestContext()
   let scriptfile = substitute($MYVIMRC, 'init\.vim', '', 'g') . 'scripts/pytest_context.py'
-  let scriptexec = 'python3 ' .  scriptdir . ' '
+  let scriptexec = 'python3 ' .  scriptfile . ' '
   let path_context = expand('%')
   let file_context = system(scriptexec . @% . ' ' . line('.'))
-  let path_context = substitute(path_context, '\.py', '', 'g')
+  let path_context = substitute(path_context, '\.py', '.', 'g')
   let path_context = substitute(path_context, '/', '.', 'g')
   return path_context . file_context
 endfunction
