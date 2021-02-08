@@ -49,8 +49,9 @@ parent_lines = []
 # start at the target line and go to the top of the file
 for i in range(target, -1, -1):
     if (indent := count_spacing(lines[i], space_width)) < current_indent:
-        parent_lines.append(lines[i])
-        current_indent = indent
+        if not lines[i] == "):":
+            parent_lines.append(lines[i])
+            current_indent = indent
 
 parent_lines = [line.strip() for line in parent_lines]
 

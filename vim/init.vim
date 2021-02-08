@@ -92,13 +92,14 @@ noremap H :noh<CR>
 " Start tabular
 noremap <Space><Tab> :Tabular /
 
-
 " Edit a file
 noremap <Space>fe :e!<Space>
 " Save the file
 noremap <Space>fs :w!<CR>
 " Edit this config file
 noremap <Space>ve :e! ~/.config/nvim/init.vim<CR>
+" Reload this config file
+noremap <Space>vr :so ~/.config/nvim/init.vim<CR>
 " Create a new tab
 noremap <Space>tt :tabnew<CR>
 " Go to next tab
@@ -133,6 +134,8 @@ noremap <Space>ut :UndotreeToggle<CR>
 
 " Run current file as python script
 noremap <Space>pr :!python3<Space><C-r>%<CR>
+
+noremap <Space>pt :call PythonRunTests(PythonGetTestContext())<CR>
 
 " Open vim help (type help query)
 noremap <Space>h :help<Space>
@@ -356,6 +359,7 @@ func! PythonRunTests(...)
     if a:0 < 1
       execute "10split term://" . g:test_func
     else
+      echo g:test_func . ' ' . a:1
       execute "10split term://" . g:test_func . ' ' . a:1
     endif
   else
@@ -370,6 +374,13 @@ function! PythonGetTestContext()
   let file_context = system(scriptexec . @% . ' ' . line('.'))
   let path_context = substitute(path_context, '\.py', '.', 'g')
   let path_context = substitute(path_context, '/', '.', 'g')
+
+  if exists('g:exclude_test_dir')
+    echo g:exclude_test_dir . '.'
+    let path_context = substitute(path_context, g:exclude_test_dir . '.', '', 'g')
+    echo path_context
+  endif
+
   return path_context . file_context
 endfunction
 
