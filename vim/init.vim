@@ -332,7 +332,9 @@ let g:rainbow_active=1
 " Functions {{{1 "
 
 func! BlackFormat()
+  " Execute black on the current file
   silent! execute "!black " . bufname('%')
+  " Reload the file
   edit!
 endf
 
@@ -354,25 +356,72 @@ func! EchoSuccess(msg)
   echohl None
 endf
 
+func! SetupPersistentTerminal()
+  " Split and open terminal
+  execute 'split'
+  execute 'term'
+  " Assign the terminal buffer number to g:persistent_terminal for future access
+  let g:persistent_terminal = bufnr('%')
+
+  " Instead of destroying the buffer on close (default action for 'Q')
+  " Just hide it
+  execute 'noremap <buffer> Q :close<CR>'
+  " Hide it after were done setting it up
+  execute 'close'
+endf
+
+func! ShowPersistentTerminal()
+  " Only show if persistent terminal is already configured
+  if exists('g:persistent_terminal')
+    " Split and jump to the buffer with the terminal
+    execute '10split'
+    execute g:persistent_terminal . 'b'
+  else
+    call EchoWarning('g:persistent_terminal is not set.  Call SetupPersistentTerminal() to fix this.')
+  endif
+endf
+
+func! RunCommandInPersistentTerminal(cmd)
+  if exists('g:persistent_terminal')
+    call ShowPersistentTerminal()
+    " For some reason, execute normal! does not allow typing while in insert
+    " mode into a terminal buffer.  This function puts text but does not
+    " behave like insert mode, so it can't launch the command (w/ <CR>)
+    call nvim_put([a:cmd], 'c', v:false, v:true)
+    " But I can go into insert mode after putting the text in so the user must
+    " hit the enter key.
+    execute "normal! a"
+  else
+    call EchoWarning('g:persistent_terminal is not set.  Call SetupPersistentTerminal() to fix this.')
+  endif
+endf
+
 func! PythonRunTests(...)
   if exists('g:test_func')
     if a:0 < 1
-      execute "10split term://" . g:test_func
+      " If no test context is provided, just run the test function
+      call RunCommandInPersistentTerminal(g:test_func)
     else
-      echo g:test_func . ' ' . a:1
-      execute "10split term://" . g:test_func . ' ' . a:1
+      " Otherwise put the test context after the command
+      call RunCommandInPersistentTerminal(g:test_func . ' ' . a:1)
     endif
   else
     call EchoWarning('g:test_func is not set')
   endif
 endf
 
-function! PythonGetTestContext()
+func! PythonGetTestContext()
+  " Get the path of this init.vim file by getting the full path and removing
+  " this filename from it.  Then append the directory of the python scripts
+
   let scriptfile = substitute($MYVIMRC, 'init\.vim', '', 'g') . 'scripts/pytest_context.py'
   let scriptexec = 'python3 ' .  scriptfile . ' '
   let path_context = expand('%')
+  " Run pytest_context.py to get the code-aware scope of the line
   let file_context = system(scriptexec . @% . ' ' . line('.'))
+  " Replace filepath slashes with dots
   let path_context = substitute(path_context, '\.py', '.', 'g')
+  " When running pytests, the file is used as a module so remove the .py
   let path_context = substitute(path_context, '/', '.', 'g')
 
   if exists('g:exclude_test_dir')
@@ -385,3 +434,5 @@ function! PythonGetTestContext()
 endfunction
 
 " }}} "
+
+call SetupPersistentTerminal()

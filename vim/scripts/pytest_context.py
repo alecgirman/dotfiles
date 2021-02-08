@@ -15,6 +15,10 @@ with open(filename, "r") as file:
 
 
 def identify_spacewidth():
+    """
+    Identifies the spacing in the file.  If tabs are used, it returns 0.
+    If spaces are used, it returns the number of spaces per indent.
+    """
     for line in lines:
         if line.startswith(" "):
             for c in line:
@@ -27,6 +31,9 @@ def identify_spacewidth():
 
 
 def count_spacing(line, space_width):
+    """
+    Count the number of 'tabs', which can either be actual tabs or space_width increments of spaces.
+    """
     if line.startswith("\t"):
         return len(line) - len(line.lstrip())
     elif line.startswith(" "):
@@ -46,9 +53,12 @@ space_width = identify_spacewidth()
 current_indent = count_spacing(lines[target], space_width)
 parent_lines = []
 
+
 # start at the target line and go to the top of the file
 for i in range(target, -1, -1):
     if (indent := count_spacing(lines[i], space_width)) < current_indent:
+        # Black formatting can align a function definition to multiple lines,
+        # so don't skip over the actual definition
         if not lines[i] == "):":
             parent_lines.append(lines[i])
             current_indent = indent
