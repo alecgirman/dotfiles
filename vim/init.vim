@@ -132,6 +132,8 @@ noremap <Space>nt :NERDTreeToggle<CR>
 " Open Undo tree
 noremap <Space>ut :UndotreeToggle<CR>
 
+noremap <C-j> :AnyJump<CR>
+
 " Run current file as python script
 noremap <Space>pr :!python3<Space><C-r>%<CR>
 
@@ -205,6 +207,8 @@ Plug 'tpope/vim-sensible'
 Plug 'plasticboy/vim-markdown'
 " Easy whitespace formatting 
 Plug 'godlygeek/tabular'
+" Black formatting for Python
+Plug 'psf/black'
 " Comment and uncomment code
 Plug 'tpope/vim-commentary'
 " Add, change, or delete surrounding pairs
@@ -221,13 +225,13 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'Glench/Vim-Jinja2-Syntax'
 " Ripgrep for vim
 Plug 'jremmen/vim-ripgrep'
+" Quick jumping
+Plug 'pechorin/any-jump.vim'
 " Adds cool icons to NERDTree - Requires a Nerd Font, see below
 Plug 'ryanoasis/vim-devicons'
 
 " UNUSED PLUGINS
 
-" Black formatting for Python
-" Plug 'psf/black'
 " Quick UI for vim
 " Plug 'skywind3000/vim-quickui'
 " Text exchange operator - UNUSED
@@ -398,7 +402,7 @@ endf
 
 func! PythonRunTests(...)
   if exists('g:test_func')
-    if a:0 < 1
+    if a:0 < 1 || exists('g:dont_use_test_context')
       " If no test context is provided, just run the test function
       call RunCommandInPersistentTerminal(g:test_func)
     else

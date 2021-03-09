@@ -5,5 +5,6 @@ setl foldmethod=indent
 
 augroup custom_python
     autocmd!
-    autocmd BufWritePre *.py execute ':call BlackFormat()'
+    " autocmd BufWritePre *.py execute ':call BlackFormat()'
+    autocmd BufWritePre *.py execute ':Black'
 augroup end
