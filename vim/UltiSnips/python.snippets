@@ -18,3 +18,16 @@ endsnippet
 snippet wo
 with open($1, '$2') as $3:
 endsnippet
+
+snippet cls
+class $1:
+	def __init__(self):
+		$2
+endsnippet
+
+snippet exception
+class $1(Exception):
+	def __init__(self$2):
+		self.message = f'$3'
+		super.__init__(self.message)
+endsnippet
