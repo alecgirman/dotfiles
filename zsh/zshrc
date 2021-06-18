@@ -51,8 +51,12 @@ alias v='nvim'
 alias gs='git status'
 alias gcm='git commit -m'
 alias gu='git pull'
+alias gd='git diff'
 alias gp='git push'
 alias ga='git add'
+alias gau='git add -u'
+alias gl='git log'
+alias glg='git log --graph'
 
 # go to dotfiles folder
 alias gdf='cd ~/dotfiles'
