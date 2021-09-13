@@ -96,8 +96,6 @@ noremap <Space><Tab> :Tabular /
 noremap <Space>fe :e!<Space>
 " Save the file
 noremap <Space>fs :w!<CR>
-" Edit this config file
-noremap <Space>ve :e! ~/.config/nvim/init.vim<CR>
 " Reload this config file
 noremap <Space>vr :so ~/.config/nvim/init.vim<CR>
 " Create a new tab
@@ -108,6 +106,11 @@ noremap <Space>tn :tabnext<CR>
 noremap <Space>tp :tabprevious<CR>
 " Close a tab
 noremap <Space>tc :tabclose<CR>
+
+" Edit this config file
+noremap <Space>fev :e! ~/.config/nvim/init.vim<CR>
+" Edit this config file (new alias)
+noremap <Space>fez :e! ~/dotfiles/zsh/zshrc<CR>
 
 " Switch window controls
 noremap <A-j> <C-w>j
