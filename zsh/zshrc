@@ -61,6 +61,12 @@ alias glg='git log --graph'
 # go to dotfiles folder
 alias gdf='cd ~/dotfiles'
 
+alias djd='sudo docker-compose run web psql -U django -h db postgres'
+alias djm='sudo docker-compose run web python3 manage.py'
+alias djs='sudo docker-compose run --service-ports web python3 manage.py runserver'
+alias djt='sudo docker-compose run web pytest'
+alias djr='sudo docker-compose run web'
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
