@@ -227,6 +227,8 @@ Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'jremmen/vim-ripgrep'
 " Quick jumping
 Plug 'pechorin/any-jump.vim'
+" dashboard-nvim dependency
+Plug 'liuchengxu/vim-clap'
 " Dashboard, like startify
 Plug 'glepnir/dashboard-nvim'
 " Adds cool icons to NERDTree - Requires a Nerd Font, see below
