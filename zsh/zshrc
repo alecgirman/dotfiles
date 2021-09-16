@@ -14,6 +14,7 @@ export LANGUAGE=en_US
 export XDG_DATA_DIRS="/usr/local/share:/usr/share"
 export XDG_CONFIG_DIRS="/etc/xdg"
 
+# more color and prompt stuff
 autoload -U colors;
 autoload -U promptinit;
 colors && promptinit;
